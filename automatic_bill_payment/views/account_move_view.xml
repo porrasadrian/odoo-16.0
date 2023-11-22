@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='to_check']" position="after">
+                    <field name="automatic_journal_id"
+                           attrs="{'invisible': [('move_type', '!=', 'in_invoice')], 'readonly': [('state', '!=', 'draft')]}"
+                           options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
