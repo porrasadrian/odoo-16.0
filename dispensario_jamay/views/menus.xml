@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="patients_act_window" model="ir.actions.act_window">
+            <field name="name">Pacientes</field>
+            <field name="res_model">hospital.patients</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    En este momento no se cuenta con ningún paciente registrado. Por favor, proceda a registrar a un
+                    paciente para dar inicio al proceso.
+                </p>
+            </field>
+        </record>
+
+        <record id="nota_medica_act_window" model="ir.actions.act_window">
+            <field name="name">Notas medicas</field>
+            <field name="res_model">medical.note</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    En este momento no se cuenta con ninguna nota medica registrada. Por favor, proceda a registrar una nota medica
+                    para dar inicio al proceso.
+                </p>
+            </field>
+        </record>
+
+          <record id="prescription_act_window" model="ir.actions.act_window">
+            <field name="name">Recetas medicas</field>
+            <field name="res_model">prescription.note</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    En este momento no se cuenta con ninguna receta registrada. Por favor, proceda a registrar una receta medica
+                    para dar inicio al proceso.
+                </p>
+            </field>
+        </record>
+
+        <record id="diagnostic_act_window" model="ir.actions.act_window">
+            <field name="name">Diagnosticos</field>
+            <field name="res_model">diagnostic.note</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    En este momento no se cuenta con ninguna receta registrada. Por favor, proceda a registrar una receta medica
+                    para dar inicio al proceso.
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <menuitem name="Dispensario Jamay" id="menu_parent" web_icon="dispensario_jamay,static/description/icon.png"/>
+        <menuitem name="Pacientes" id="menu_child" parent="menu_parent" action="patients_act_window"/>
+        <menuitem name="Notas medicas" id="menu_nota_medica" parent="menu_parent" action="nota_medica_act_window" groups="dispensario_jamay.dispensary_menu_medical_note"/>
+        <menuitem name="Receta medica" id="menu_prescription" parent="menu_parent" action="prescription_act_window"/>
+        <menuitem name="Base de diagnosticos" id="menu_diagnostic" parent="menu_parent" action="diagnostic_act_window"/>
+
+
+    </data>
+</odoo>

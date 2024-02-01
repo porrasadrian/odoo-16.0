@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="nota_medica_form_view" model="ir.ui.view">
+            <field name="name">nota_medica.form</field>
+            <field name="model">medical.note</field>
+            <field name="arch" type="xml">
+                <form string="Pacientes">
+                    <header>
+                        <button name="print_medical_note" type="object" string="Imprimir nota medica"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archivado" bg-color="bg-red"
+                                attrs="{'invisible':[('active','=', True)]}"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="consecutive_medical_note" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name_full" invisible="1"/>
+                                <field name="active" invisible="1"/>
+                                <field name="name_patients_id" required="1"
+                                       options="{'no_quick_create':True, 'no_create': True, 'no_create_edit': True,'no_open':True}"/>
+                                <field name="ts"/>
+                                <field name="td"/>
+                                <field name="tam"/>
+                                <field name="temp"/>
+                                <field name="frecc"/>
+                                <field name="frecr"/>
+                                <field name="glucosa"/>
+                            </group>
+                            <group>
+                                <field name="user_id"
+                                       options="{'no_quick_create':True, 'no_create': True, 'no_create_edit': True, 'no_open':True}"
+                                       widget="selection"/>
+                                <field name="create_date" readonly="1" string="Fecha"/>
+                                <field name="peso"/>
+                                <field name="talla"/>
+                                <field name="imc"/>
+                                <field name="perimetro_cefalico"/>
+                                <field name="perimetro_abdominal"/>
+                                <field name="saturacion_oxigeno"/>
+                                <field name="estado_nutricional"/>
+                            </group>
+                        </group>
+                        <h4>
+                            Escriba aqui su nota medica
+                        </h4>
+                        <field name="nota_medica" placeholder="Escriba aqui su nota medica" style="font-weight: 700;"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="nota_medica_tree_view" model="ir.ui.view">
+            <field name="name">nota_medica tree</field>
+            <field name="model">medical.note</field>
+            <field name="arch" type="xml">
+                <tree string="Notas medicas">
+                    <control>
+                        <create name="agregar_nota_medica" string="Agregar una nueva nota medica"/>
+                    </control>
+                    <field name="sequence" widget="handle"/>
+                    <field name="consecutive_medical_note"/>
+                    <field name="create_date" string="Fecha"/>
+                    <field name="name_patients_id"/>
+                    <field name="user_id"/>
+                    <field name="peso"/>
+                    <field name="talla"/>
+                    <field name="saturacion_oxigeno"/>
+                    <field name="perimetro_abdominal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="medical_note_view_search" model="ir.ui.view">
+            <field name="name">medical.note</field>
+            <field name="model">medical.note</field>
+            <field name="arch" type="xml">
+                <search string="Busqueda por notas medicas">
+                    <group expand="1" string="Group By">
+                        <field name="name_full"/>
+                        <field name="user_id"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_note		,Acceso al modelo de nota medica,model_medical_note,dispensario_jamay.nota_medica_module_group_user,1,1,1,1
+access_patients,Acceso al modelo de pacientes,model_hospital_patients,dispensario_jamay.dispensary_module_group,1,1,1,1
+access_prescription,Acceso al modelo de recetas medicas,model_prescription_note,dispensario_jamay.dispensary_module_group,1,1,1,1
+access_prescription_line	,Acceso al modelo de la tabla de recetas medicas,model_prescription_note_line,dispensario_jamay.dispensary_module_group,1,1,1,1
+access_diagnostic,Acceso al modelo de diagnosticos	,model_diagnostic_note,dispensario_jamay.dispensary_module_group,1,1,1,1

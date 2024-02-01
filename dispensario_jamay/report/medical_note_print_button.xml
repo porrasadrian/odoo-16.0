@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report id="req_dispensario_jamay"
+            model="medical.note"
+            string="Imprimir nota medica"
+            menu="True"
+            report_type="qweb-pdf"
+            name="dispensario_jamay.req_dispensario_jamay_report"
+            file="dispensario_jamay.req_dispensario_jamay_report"
+            paperformat="dispensario_jamay.dispensario_jamay_paper_format"/>
+</odoo>
+
+

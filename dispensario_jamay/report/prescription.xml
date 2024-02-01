@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report id="prescription_dispensario_jamay"
+            model="prescription.note"
+            string="Imprimir receta medica"
+            menu="True"
+            report_type="qweb-pdf"
+            name="dispensario_jamay.prescription_dispensario_jamay_report"
+            file="dispensario_jamay.prescription_dispensario_jamay_report"
+            paperformat="dispensario_jamay.dispensario_jamay_paper_format"/>
+</odoo>
+
+

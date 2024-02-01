@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="diagnostic_note_form_view" model="ir.ui.view">
+            <field name="name">diagnostic</field>
+            <field name="model">diagnostic.note</field>
+            <field name="arch" type="xml">
+                <form string="Diagnosticos">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archivado" bg-color="bg-red"
+                                attrs="{'invisible':[('active','=', True)]}"/>
+                        <h3>
+                            (1) Base de diagnósticos
+                        </h3>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="diagnostic_name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="diagnostic_tree_view" model="ir.ui.view">
+            <field name="name">diagnostic</field>
+            <field name="model">diagnostic.note</field>
+            <field name="arch" type="xml">
+                <tree string="Diagnosticos">
+                    <field name="diagnostic_name"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="dispensary_module_category">
+            <field name="name">Dispensario Jamay</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="dispensary_module_group" model="res.groups">
+            <field name="name">Permisos de administrador</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="dispensario_jamay.dispensary_module_category"/>
+        </record>
+
+        <record id="nota_medica_module_group_user" model="res.groups">
+            <field name="name">Acceso a nota medica</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="dispensario_jamay.dispensary_module_category"/>
+        </record>
+
+        <record id="hospital_patients_permision_delete" model="res.groups">
+            <field name="name">Permisos para NO eliminar registros</field>
+            <field name="category_id" ref="dispensario_jamay.dispensary_module_category"/>
+        </record>
+
+        <record id="dispensary_menu_medical_note" model="res.groups">
+            <field name="name">Permisos para ver el menu de notas medicas</field>
+            <field name="category_id" ref="dispensario_jamay.dispensary_module_category"/>
+        </record>
+
+
+
+
+    </data>
+</odoo>

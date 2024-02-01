@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="prescription_form_view" model="ir.ui.view">
+            <field name="name">prescription.form</field>
+            <field name="model">prescription.note</field>
+            <field name="arch" type="xml">
+                <form string="Recetas medicas">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archivado" bg-color="bg-red"
+                                attrs="{'invisible':[('active','=', True)]}"/>
+                        <field name="active" invisible="1"/>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="consecutive_prescription" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name_patients_prescription" required="1"
+                                       options="{'no_quick_create':True, 'no_create': True, 'no_create_edit': True,}"/>
+                                <field name="date_patients_prescription"/>
+                            </group>
+                            <group>
+                                <field name="record"/>
+                                <field name="curp"/>
+                            </group>
+                        </group>
+                        <h3>
+                            Detalles de las indicaciones
+                        </h3>
+                        <field name="details" placeholder="Escribe aqui los detalles de las indicaciones"/>
+                        <br/>
+                        <field name="prescription_line_ids" string="Receta medica">
+                            <tree>
+                                <control>
+                                    <create name="agregar_receta_medica" string="Agregar una nueva receta medica"/>
+                                </control>
+                                <field name="sequence" widget="handle"/>
+                                <field name="diagnosis"
+                                       options="{'no_quick_create':True, 'no_create': True, 'no_create_edit': True,'no_edit':True}"/>
+                                <field name="search_medicine"/>
+                                <field name="presentation"/>
+                                <field name="admon" optional="hidden"/>
+                                <field name="qty" optional="hidden"/>
+                                <field name="indications" optional="hidden"/>
+                                <field name="duration" optional="hidden"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="prescription_id" invisible="1"/>
+                                        <field name="diagnosis"/>
+                                        <field name="search_medicine"/>
+                                        <field name="presentation"/>
+                                        <field name="admon"/>
+                                    </group>
+                                    <group>
+                                        <field name="qty"/>
+                                        <field name="indications"/>
+                                        <field name="duration"/>
+                                    </group>
+                                </group>
+
+                            </form>
+                        </field>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="prescription_tree_view" model="ir.ui.view">
+            <field name="name">prescription note tree</field>
+            <field name="model">prescription.note</field>
+            <field name="arch" type="xml">
+                <tree string="Recetas medicas">
+                    <field name="consecutive_prescription"/>
+                    <field name="name_patients_prescription"/>
+                    <field name="date_patients_prescription"/>
+                    <field name="record"/>
+                    <field name="curp" optional="hidden"/>
+                    <field name="diagnosis_name" optional="hidden" string="Nombre del diagnostico"/>
+                    <field name="medic_name" optional="hidden" string="Nombre del medicamento"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_prescription_note_search" model="ir.ui.view">
+            <field name="name">prescription.note.search</field>
+            <field name="model">prescription.note</field>
+            <field name="arch" type="xml">
+                <search>
+                    <!-- Configuración de otros campos -->
+                    <field name="name_full_prescription" /> <!-- Campo related para aplicarlo al filtro por tema de ser Many2one) -->
+                    <field name="record"/>
+                    <field name="curp"/>
+                    <field name="diagnosis_name" string="Nombre del diagnostico"/>
+                    <field name="medic_name" string="Nombre del medicamento"/>
+                    <!-- Configuración de otros campos -->
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

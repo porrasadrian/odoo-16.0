@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="req_dispensario_jamay_report">
+        <xpath expr="//div[@class='page']" position="attributes">
+            <attribute name="style">font-family: 'Source Sans Pro', sans-serif;</attribute>
+        </xpath>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="page" style="font-size:18px;">
+                    <div class="row">
+                        <!-- INICIA LOGO DE LA EMPRESA -->
+
+                        <!-- TERMINA LOGO DE LA EMPRESA -->
+                        <!-- EMPIEZA DATOS DEL EMISOR -->
+                        <div class="col-12">
+                            <center style="font-size:16px !important;font-family:Source Sans Pro;text-align:center;">
+                                <strong>
+                                    <p>Unidad médica Dispensario Jamay</p>
+                                    <p>NOTA DE EVOLUCION</p>
+                                </strong>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table style="font-size:16px;width:100% !important;">
+                            <thead>
+                                <tr>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Nombre del paciente(s)
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Edad
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        género
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Número de expediente
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <span>
+                                            <t t-esc="o.patients_ids.name_full"/>
+                                        </span>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <span>
+                                            <t t-esc="o.patients_ids.age"/>
+                                        </span>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-esc="{False: False, 'male': 'Masculino', 'female': 'Femenino'}[o.patients_ids.gender]"/>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-esc="o.patients_ids.file_number"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Fecha de nacimiento
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        CURP
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        ocupación del paciente
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Medico quien atendio
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="tr:nth-child(odd) {background-color: #f9f9f9;}">
+                                <tr>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-if="o.patients_ids.birthday">
+                                            <t t-esc="o.patients_ids.birthday.strftime('%d de %B del año %Y')"
+                                               t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                        </t>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-esc="o.patients_ids.curp"/>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                       <t t-esc="o.patients_ids.occupation"/>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                       <t t-esc="user.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <p style="font-size:20px; margin-top:20px;text-align:center;">
+                            Signos vitales
+                        </p>
+                        <hr/>
+                        <table class="table table-sm table-bordered table-striped"
+                               style="font-size:14px;border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">TS</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">TD</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">TAM</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">TEMP</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">FRECC</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">FRECR</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">GLUCOSA</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">PESO</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">TALLA</th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:5px;">IMC</th>
+                                    <th style="width:8% !important;padding:8px !important;background-color:#D5DDE4;">
+                                        PERIMETRO CEFALICO
+                                    </th>
+                                    <th style="width:8% !important;padding:8px !important;background-color:#D5DDE4;">
+                                        PERIMETRO ABDOMINAL
+                                    </th>
+                                    <th style="width:8% !important;padding:8px !important;background-color:#D5DDE4;">
+                                        SATURACION DE OXIGENO
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="invoice_tbody" style="tr:nth-child(odd) {background-color: #f9f9f9;}">
+                                <tr style="background-color: #f9f9f9;">
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.ts"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.td"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <span t-esc="'%.2f'% o.tam"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.temp"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.frecc"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.frecr"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.glucosa"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.peso"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <t t-esc="o.talla"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:5px;">
+                                        <span t-esc="'%.2f'% o.imc"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:8px;">
+                                        <t t-esc="o.perimetro_cefalico"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:8px;">
+                                        <t t-esc="o.perimetro_abdominal"/>
+                                    </td>
+                                    <td style="width:6% !important; padding:8px;">
+                                        <t t-esc="o.saturacion_oxigeno"/>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <table class="table table-sm table-bordered table-striped" style="font-size:18px;">
+                            <tr>
+                                <td>
+                                    Fecha:
+                                    <t t-if="o.create_date">
+                                        <t t-esc="o.create_date.strftime('%d de %B del año %Y')"
+                                               t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                    </t>
+                                </td>
+                                <td>
+                                    Estado nutricional:
+                                    <t t-esc="o.estado_nutricional"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="row">
+                            <p style="font-size:17px;font-family:Source Sans Pro;text-align:justify;">
+                                <strong>Nota medica:</strong>
+                                <br/>
+                                <t t-esc="o.nota_medica"/>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p style="text-align:center;font-family:Source Sans Pro; font-size:16px;line-height:1 cm;">
+                                <center>
+                                    <b>Medico:</b>
+                                    <t t-esc="user.name"/>
+                                </center>
+                            </p>
+                            <p style="text-align:center;font-family:Source Sans Pro; font-size:16px;line-height:1 cm;">
+                                <center>
+                                    <b>Cedula:</b>
+                                    <t t-esc="user.professional_license"/>, UDG
+                                </center>
+                            </p>
+                             <p style="text-align:center;font-family:Source Sans Pro; font-size:16px;line-height:1 cm;">
+                                <center>
+                                    <b>Profesión:</b>
+                                    <t t-esc="user.profession"/>
+                                </center>
+                            </p>
+                             <p style="text-align:center;font-family:Source Sans Pro; font-size:16px;line-height:1 cm;">
+                                <center>
+                                    <b>Universidad de procedencia:</b>
+                                    <t t-esc="user.university"/>
+                                </center>
+                            </p>
+                            <p style="text-align:center;font-family:Source Sans Pro; font-size:16px;line-height:1 cm;">
+                                <center>
+                                    <b>NOTA:</b>
+                                    TODAS LAS NOTAS MEDICAS DEBERAN IR FIRMADAS POR EL MEDICO ADSCRITO AL SERVICIO
+                                </center>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

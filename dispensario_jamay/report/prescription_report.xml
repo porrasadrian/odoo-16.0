@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="prescription_dispensario_jamay_report">
+        <xpath expr="//div[@class='page']" position="attributes">
+            <attribute name="style">font-family: 'Source Sans Pro', sans-serif;</attribute>
+        </xpath>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="page" style="font-size:18px;">
+                    <div class="row">
+                        <!--INICIA LOGO DE LA EMPRESA-->
+                        <div class="col-3">
+
+                        </div>
+                        <!--TERMINA LOGO DE LA EMPRESA-->
+
+                        <!--EMPIEZA DATOS DEL EMISOR-->
+                        <div class="col-5">
+
+                        </div>
+                        <div class="col-4" style="border: 2px; border-style: groove;border-radius: 10px;">
+                            <div style="padding:30px 20px 20px 20px;">
+                                <center>
+                                    <strong>FOLIO:</strong>
+                                    <t t-esc="o.consecutive_prescription"/>
+                                    <br/>
+                                    <t t-if="o.create_date">
+                                        <strong>FECHA:</strong>
+                                        <t t-esc="o.create_date.strftime('%d de %B del año %Y')"
+                                           t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                    </t>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                        <p style="font-size:30px;margin-top:-55px;">RECETA</p>
+                    </center>
+                    <div class="row">
+                        <table style="font-size:16px;width:100% !important;">
+                            <thead>
+                                <tr>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Nombre de la unidad
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Clave
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Domicilio
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Telefono del dispensario
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <span>
+                                            Centro de salud comunitario en Jamay
+                                        </span>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <span>
+                                            Gobierno municipal 2021-2024
+                                        </span>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        Niños Heroes, Centro, 47900 Jamay, Jal.
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        392 688 0031
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        CURP
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Expediente
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Nombre
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:10px;text-align:center;">
+                                        Fecha de nacimiento
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="tr:nth-child(odd) {background-color: #f9f9f9;}">
+                                <tr>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-esc="o.curp"/>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-esc="o.record"/>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-esc="o.name_patients_prescription.name_full"/>
+                                    </td>
+                                    <td style="padding:10px;text-align:center;font-size:16px;">
+                                        <t t-if="o.date_patients_prescription">
+                                            <t t-esc="o.date_patients_prescription.strftime('%d de %B del año %Y')"
+                                               t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <t t-set="row_number" t-value="1"/>
+                        <table class="table table-sm table-bordered table-striped"
+                               style="font-size:16px;border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="width:2% !important;background-color:#D5DDE4;padding:4px;">
+                                        #
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Diagnostico
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Medicamento
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Presentacion
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Via de
+                                        admon
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Cantidad
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Indicaciones
+                                    </th>
+                                    <th style="width:6% !important;background-color:#D5DDE4;padding:4px;">
+                                        Duracion
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="invoice_tbody" style="tr:nth-child(odd) {background-color: #f9f9f9;}">
+                                <tr t-foreach="o.prescription_line_ids" t-as="l">
+                                    <td style="width:2% !important;">
+                                        <span t-esc="row_number"/>
+                                    </td>
+                                    <!-- Incrementar la variable de número de fila -->
+                                    <t t-set="row_number" t-value="row_number + 1"/>
+                                    <td>
+                                        <t t-esc="l.diagnosis.diagnostic_name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.search_medicine"/>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.presentation"/>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.admon"/>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.qty"/>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.indications"/>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="l.duration"/>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <h3>
+                                Detalles de las indicaciones
+                            </h3>
+                            <span style="font-size:16px;text-align:justify;">
+                                <t t-esc="o.details"/>
+                            </span>
+                        </div>
+
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <!-- Primera tabla con un ancho del 80% -->
+                        <div class="col-8">
+                            <table class="table  table-bordered">
+                                <td>
+                                    <strong>Nombre del medico:</strong>
+                                    <t t-esc="user.name"/>
+                                    <br/>
+                                    <strong>Cedula profesional:</strong>
+                                    <t t-esc="user.professional_license"/>
+                                    <br/>
+                                    <strong>Cedula de especialidad:</strong>
+                                    <t t-esc="user.specialty_certificate"/>
+                                    <br/>
+                                    <strong>Universidad de procedencia:</strong>
+                                    <t t-esc="user.university"/>
+                                    <br/>
+                                    <strong>Profesion:</strong>
+                                    <t t-esc="user.profession"/>
+                                    <br/>
+                                    <strong>Horario de atencion:</strong>
+                                    24/7
+
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <center>
+                                        __________________________________
+                                        <br/>
+                                        FIRMA
+                                    </center>
+                                </td>
+
+                            </table>
+                        </div>
+
+                        <!-- Segunda tabla con un ancho del 20% -->
+                        <div class="col-4">
+                            <table class="table  table-bordered">
+                                <center>
+                                    <td style="height:260px !important;text-align:center;">
+                                        <strong>SELLO DE LA UNIDAD</strong>
+                                    </td>
+                                </center>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

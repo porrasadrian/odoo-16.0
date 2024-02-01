@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="patients_form_view" model="ir.ui.view">
+            <field name="name">patients.form</field>
+            <field name="model">hospital.patients</field>
+            <field name="arch" type="xml">
+                <form string="Pacientes">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archivado" bg-color="bg-red"
+                                attrs="{'invisible':[('active','=', True)]}"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="consecutive" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <h3>
+                            (1) Identificación del paciente
+                        </h3>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="file_number"/>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Datos personales">
+                                <h3>
+                                    (2) Datos personales
+                                </h3>
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="second_last_name"/>
+                                        <field name="birthday"/>
+                                        <field name="gender"/>
+                                        <field name="state"/>
+                                        <field name="migrant"/>
+                                        <field name="disabled"/>
+                                        <field name="speak_indigenous"/>
+                                        <field name="marinal_status"/>
+                                        <field name="read_and_write"/>
+                                        <field name="occupation"/>
+                                    </group>
+                                    <group>
+                                        <field name="first_last_name"/>
+                                        <field name="name_full"/>
+                                        <field name="age"/>
+                                        <field name="sex"/>
+                                        <field name="country_id"
+                                               options="{'no_create': True,'no_edit': True, 'no_open': True}"/>
+                                        <field name="curp"/>
+                                        <field name="religion"/>
+                                        <field name="indigenous"/>
+                                        <field name="phone"/>
+                                        <field name="scholarship"/>
+                                    </group>
+                                </group>
+                                <field name="medical_note_one2many" string="Nota medica"/>
+                            </page>
+                            <page string="Domicilio">
+                                <h3>
+                                    Domicilio
+                                </h3>
+                                <group>
+                                    <group>
+                                        <field name="resides"/>
+                                        <field name="foreigner"/>
+                                        <field name="road_name"/>
+                                        <field name="num_int"/>
+                                        <field name="and_street"/>
+                                        <field name="ignore_cp"/>
+                                        <field name="name_settlement"/>
+                                        <field name="municipalities"/>
+                                    </group>
+                                    <group>
+                                        <field name="country_dom_id"
+                                               options="{'no_create': True,'no_edit': True, 'no_open': True}"/>
+                                        <field name="type_of_road"/>
+                                        <field name="num_ext"/>
+                                        <field name="between_street"/>
+                                        <field name="c_p"/>
+                                        <field name="settlement_type"/>
+                                        <field name="fed"/>
+                                        <field name="location"/>
+                                        <field name="other_location"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="patients_tree_view" model="ir.ui.view">
+            <field name="name">patients.tree</field>
+            <field name="model">hospital.patients</field>
+            <field name="arch" type="xml">
+                <tree string="Pacientes">
+                    <field name="consecutive"/>
+                    <field name="name"/>
+                    <field name="first_last_name"/>
+                    <field name="second_last_name"/>
+                    <field name="birthday" optional="hidden"/>
+                    <field name="sex" optional="hidden"/>
+                    <field name="gender" optional="hidden"/>
+                    <field name="country_id" optional="hidden"/>
+                    <field name="state" optional="hidden"/>
+                    <field name="curp" optional="hidden"/>
+                    <field name="migrant" optional="hidden"/>
+                    <field name="religion" optional="hidden"/>
+                    <field name="disabled" optional="hidden"/>
+                    <field name="indigenous" optional="hidden"/>
+                    <field name="speak_indigenous" optional="hidden"/>
+                    <field name="phone" optional="hidden"/>
+                    <field name="marinal_status" optional="hidden"/>
+                    <field name="scholarship" optional="hidden"/>
+                    <field name="read_and_write" optional="hidden"/>
+                    <field name="occupation" optional="hidden"/>
+                    <field name="file_number" optional="hidden"/>
+                    <field name="resides" optional="hidden"/>
+                    <field name="country_dom_id" optional="hidden"/>
+                    <field name="foreigner" optional="hidden"/>
+                    <field name="type_of_road" optional="hidden"/>
+                    <field name="road_name" optional="hidden"/>
+                    <field name="num_ext" optional="hidden"/>
+                    <field name="num_int" optional="hidden"/>
+                    <field name="between_street" optional="hidden"/>
+                    <field name="and_street" optional="hidden"/>
+                    <field name="c_p" optional="hidden"/>
+                    <field name="ignore_cp" optional="hidden"/>
+                    <field name="settlement_type" optional="hidden"/>
+                    <field name="name_settlement" optional="hidden"/>
+                    <field name="fed" optional="hidden"/>
+                    <field name="municipalities" optional="hidden"/>
+                    <field name="location" optional="hidden"/>
+                    <field name="other_location" optional="hidden"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hospital_patients_view_search" model="ir.ui.view">
+            <field name="name">hospital.patients</field>
+            <field name="model">hospital.patients</field>
+            <field name="arch" type="xml">
+                <search string="Busqueda por campos">
+                    <group expand="1" string="Group By">
+                        <field name="name_full"/>
+                        <field name="name"/>
+                        <field name="first_last_name"/>
+                        <field name="second_last_name"/>
+                        <field name="curp"/>
+                        <field name="consecutive"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>
